@@ -1,0 +1,225 @@
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media  screen and (max-width: 480px) { @content; }
+  }
+  @else if $media == wide-handhelds {
+    @media  screen and (min-width: 481px) and (max-width: 992px) { @content; }
+  }
+  @else if $media == tablets {
+    @media  screen and (min-width: 993px) { @content; }
+  }
+}
+
+.cont{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.button{
+    font-family: "Montserrat";
+    font-weight: 700;
+    background-color: #8d81ac;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #8d81ac;
+    &:hover{
+        background-color: #fff;
+        color: #8d81ac
+    }
+    
+    color: #fff;
+}
+
+.navbar{
+    background-color: #27262a;
+    width: 100%;
+    position: relative;
+    @include respond-to(handhelds) {height: 105px};
+    @include respond-to(wide-handhelds) {height: 118px};
+    @include respond-to(tablets) {height: 100px};
+    
+    .navbar__logo{
+        float: left;
+        display: flex;
+        align-items: center;
+        
+        @include respond-to(handhelds) {margin-left: 15px; margin-top: 29px};
+        @include respond-to(wide-handhelds) {margin-left: 20px;margin-top: 26px};
+        @include respond-to(tablets) {margin-left: 70px; margin-top: 30px};
+        
+        .logo__hover{display: none}
+        
+        
+        
+        h1{
+            font: 24px "Lato";
+            font-weight: 700;
+            color: #8d81ac;
+            margin-left: 18px;
+            @include respond-to(handhelds) {display: none};
+        }
+        &:hover{h1{color: #fff}
+            .logo__unhover{display: none;}
+            .logo__hover{display: inline-block}}
+    }
+    .navbar__nav{
+        float: right;
+        width: 480px;
+        display: flex;
+        justify-content: space-between;
+        @include respond-to(handhelds) {display: none};
+        @include respond-to(wide-handhelds) {height: 35px; float: none; position: absolute; bottom: 0; left: 50%; transform: translateX(-240px)};
+        @include respond-to(tablets) {height: 100px; margin-right: 35px; margin-top: 42px};
+        
+        li a{
+            font: 16px "Montserrat";
+            font-weight: 700;
+            color: #8d81ac;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+    
+    .navbar_button{
+        float: right;
+        width: 145px;
+        height: 38px;
+        @include respond-to(handhelds) {margin-top: 32px; margin-right: 26%};
+        @include respond-to(wide-handhelds) {margin-top: 24px; margin-right: 20px};
+        @include respond-to(tablets) {margin-top: 31px; margin-right: 80px};
+        
+        
+    }
+    
+    .navbar__dropdown{
+            margin-top: 40px;
+            float: right;
+            position: relative;
+            display: inline-block;
+            @include respond-to(wide-handhelds) {display: none};
+            @include respond-to(tablets) {display: none};
+        
+        .navbar__dropbtn{
+            width: 27px;
+            height: 21px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            .dropbtn__line{
+                height: 3px;
+                width: 27px;
+                background-color: #8d81ac;
+                border-radius: 5px;
+                &:first-child{
+                    width: 22px;
+                }
+                
+            }
+            &:hover{.dropbtn__line{background-color: #fff}}
+            &:hover +.dropdown__content{display: block}
+            
+        }
+        .dropdown__content{
+            display: none;
+            position: absolute;
+            left: -370px;
+            top: 65px;
+            
+            li a{
+                display: block;
+                font-family: "Montserrat";
+                font-weight: 400;
+                font-size: 26px;
+                color: #fff;
+                width: 327px;
+                height: 90px;
+                background-color: #333;
+                display: flex;
+                align-items: center;
+                padding-left: 33px;
+                border-bottom: 1px solid #3b3b3b;
+                &:hover{
+                    color: #8d81ac;
+                }
+            }
+        }
+        
+        
+    }
+}
+
+header{
+    height: 765px;
+    width: 100%;
+    background-image: url(../../dist/img/header/bg-header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include respond-to(handhelds) {background-position: center -51px;};
+    @include respond-to(wide-handhelds) {background-position: center -60px;};
+    @include respond-to(tablets) {background-position: center -168px;};
+    
+    .cont_flex{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    .header__titlebox{
+        width: 100%;
+        text-align: center;
+        font-family: "Montserrat";
+        h1{
+            
+            font-weight: 700;
+            color: #fff;
+            @include respond-to(handhelds) {font-size: 48px; margin-top: 45px};
+            @include respond-to(wide-handhelds) {font-size: 72px;margin-top: 55px};
+            @include respond-to(tablets) {font-size: 82px; margin-top: 65px};
+        }
+        p{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #8d81ac;
+            @include respond-to(handhelds) {font-size: 18px};
+            @include respond-to(wide-handhelds) {font-size: 24px};
+            @include respond-to(tablets) {font-size: 30px};
+        }
+        span{
+            
+            font-weight: 400;
+            color: #848e97;
+            @include respond-to(handhelds) {font-size: 14px};
+            @include respond-to(wide-handhelds) {font-size: 14px};
+            @include respond-to(tablets) {font-size: 16px};
+        }
+    }
+    .header__trial{
+        text-align: center;
+        .header_button{
+            margin-bottom: 15px;
+            @include respond-to(handhelds) {width: 290px; height: 45px; font-size: 18px; width: 290px};
+            @include respond-to(wide-handhelds) {width:390px; height: 63px;font-size: 21px; width: 390px};
+            @include respond-to(tablets) {width:390px; height: 63px;font-size: 21px; width: 390px};
+        }
+        p{
+            font-family: "Montserrat";
+            font-weight: 400;
+            color: #848e97;
+            font-size: 14px;
+            
+        }
+    }
+    
+    
+    
+        
+}
